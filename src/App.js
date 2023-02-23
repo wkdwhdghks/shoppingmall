@@ -7,8 +7,8 @@ function App() {
     "강남 우동맛집",
     "파이썬 독학",
   ]);
-
   const [num, setNum] = useState(0);
+  const [modal, setModal] = useState(false);
 
   return (
     <div>
@@ -21,6 +21,16 @@ function App() {
         </div>
       ))}
       <button onClick={() => setTitle([...title].sort())}>버튼</button>
+      <button onClick={() => setModal(!modal)}>모달</button>
+      {modal && <Modal />}
+    </div>
+  );
+}
+
+function Modal() {
+  return (
+    <div>
+      <p>모달창</p>
     </div>
   );
 }
