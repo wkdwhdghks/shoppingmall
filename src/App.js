@@ -10,12 +10,24 @@ function App() {
 
   const [number, setNumber] = useState([0, 0, 0]);
   const [modal, setModal] = useState(false);
+  const [titleNum, setTitleNum] = useState(0);
+
+  const handleClick = () => {
+    let prev = [...title];
+    prev[0] = "여자코트 추천";
+    setTitle(prev);
+  };
 
   return (
     <div>
       {title.map((el, index) => (
         <div key={index}>
-          <p onClick={() => setModal(!modal)}>
+          <p
+            onClick={() => {
+              setModal(!modal);
+              setTitleNum(index);
+            }}
+          >
             {el}{" "}
             <span
               onClick={() => {
@@ -31,16 +43,18 @@ function App() {
           <p>2월 17일 발행</p>
         </div>
       ))}
-      <button onClick={() => setTitle([...title].sort())}>버튼</button>
-      {modal && <Modal />}
+      {modal && (
+        <Modal title={title} handleClick={handleClick} titleNum={titleNum} />
+      )}
     </div>
   );
 }
 
-function Modal() {
+function Modal({ title, handleClick, titleNum }) {
   return (
     <div>
-      <p>모달창</p>
+      <p>{title[titleNum]}</p>
+      <button onClick={handleClick}>버튼</button>
     </div>
   );
 }
