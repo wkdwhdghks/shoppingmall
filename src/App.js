@@ -11,6 +11,7 @@ function App() {
   const [number, setNumber] = useState([0, 0, 0]);
   const [modal, setModal] = useState(false);
   const [titleNum, setTitleNum] = useState(0);
+  const [text, setText] = useState("");
 
   const handleClick = () => {
     let prev = [...title];
@@ -30,7 +31,8 @@ function App() {
           >
             {el}{" "}
             <span
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 let arr = [...number];
                 arr[index] += 1;
                 setNumber(arr);
@@ -39,10 +41,27 @@ function App() {
               따봉
             </span>{" "}
             {number[index]}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setTitle(title.filter((el, i) => el[i] !== el[index]));
+              }}
+            >
+              삭제
+            </button>
           </p>
           <p>2월 17일 발행</p>
         </div>
       ))}
+      <input onChange={(e) => setText(e.target.value)} value={text}></input>
+      <button
+        onClick={() => {
+          setTitle([text, ...title]);
+          setText("");
+        }}
+      >
+        추가
+      </button>
       {modal && (
         <Modal title={title} handleClick={handleClick} titleNum={titleNum} />
       )}
