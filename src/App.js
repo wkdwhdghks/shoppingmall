@@ -1,35 +1,32 @@
-import { useState } from "react";
-import { Navbar, Container, Nav, Row, Col } from "react-bootstrap";
-import data from "./data.js";
-import Card from "./Card.js";
+import { Navbar, Container } from "react-bootstrap";
+import { Routes, Route, Link } from "react-router-dom";
+import Home from "./page/Home";
+import Detail from "./page/Detail";
 import "./App.css";
 
 export default function App() {
-  const [shoes, setShoes] = useState(data);
-
   return (
     <div>
       <Navbar bg="dark" variant="dark">
         <Container className="nav-container">
-          <Navbar.Brand href="#home">ShoesShop</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Cart</Nav.Link>
-          </Nav>
+          <li>
+            <ul>
+              <Link to="/">ShoesShop</Link>
+            </ul>
+            <ul>
+              <Link to="/">Home</Link>
+            </ul>
+            <ul>
+              <Link to="/detail">메인페이지</Link>
+            </ul>
+          </li>
         </Container>
       </Navbar>
 
-      <div className="main-bg"></div>
-
-      <Container className="goods-container">
-        <Row>
-          {shoes.map((item, index) => (
-            <Col>
-              <Card item={item} index={index} />
-            </Col>
-          ))}
-        </Row>
-      </Container>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/detail" element={<Detail />}></Route>
+      </Routes>
     </div>
   );
 }
