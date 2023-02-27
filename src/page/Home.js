@@ -1,11 +1,7 @@
-import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import data from "../data.js";
 import Card from "../Components/Card.js";
 
-export default function Home() {
-  const [shoes] = useState(data);
-
+export default function Home({ shoes }) {
   return (
     <div>
       <div className="main-bg"></div>

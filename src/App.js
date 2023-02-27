@@ -1,10 +1,14 @@
 import { Navbar, Container } from "react-bootstrap";
 import { Routes, Route, Link } from "react-router-dom";
+import { useState } from "react";
 import Home from "./page/Home";
 import Detail from "./page/Detail";
+import data from "./data.js";
 import "./App.css";
 
 export default function App() {
+  const [shoes] = useState(data);
+
   return (
     <div>
       <Navbar bg="dark" variant="dark">
@@ -17,15 +21,15 @@ export default function App() {
               <Link to="/">Home</Link>
             </ul>
             <ul>
-              <Link to="/detail">메인페이지</Link>
+              <Link to="/detail">Detail</Link>
             </ul>
           </li>
         </Container>
       </Navbar>
 
       <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/detail" element={<Detail />}></Route>
+        <Route path="/" element={<Home shoes={shoes} />}></Route>
+        <Route path="/detail/:id" element={<Detail shoes={shoes} />}></Route>
       </Routes>
     </div>
   );
