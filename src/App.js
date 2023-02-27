@@ -1,7 +1,12 @@
+import { useState } from "react";
 import { Navbar, Container, Nav, Row, Col } from "react-bootstrap";
+import data from "./data.js";
+import Card from "./Card.js";
 import "./App.css";
 
 export default function App() {
+  const [shoes, setShoes] = useState(data);
+
   return (
     <div>
       <Navbar bg="dark" variant="dark">
@@ -18,33 +23,11 @@ export default function App() {
 
       <Container className="goods-container">
         <Row>
-          <Col>
-            <img
-              src="https://codingapple1.github.io/shop/shoes1.jpg"
-              alt="Shoes"
-              width="80%"
-            ></img>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </Col>
-          <Col>
-            <img
-              src="https://codingapple1.github.io/shop/shoes2.jpg"
-              alt="shoes"
-              width="80%"
-            ></img>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </Col>
-          <Col>
-            <img
-              src="https://codingapple1.github.io/shop/shoes3.jpg"
-              alt="Shoes"
-              width="80%"
-            ></img>
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </Col>
+          {shoes.map((item, index) => (
+            <Col>
+              <Card item={item} index={index} />
+            </Col>
+          ))}
         </Row>
       </Container>
     </div>
