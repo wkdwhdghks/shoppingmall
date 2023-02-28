@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Card from "../Components/Card.js";
 
-export default function Home({ shoes, axiosData, handleClick }) {
+export default function Home({ shoes, dataNum, setDataNum, handleClick }) {
   const [hide, setHide] = useState(true);
 
   return (
@@ -12,21 +12,9 @@ export default function Home({ shoes, axiosData, handleClick }) {
       <Container className="goods-container">
         <Row>
           {shoes.map((item, index) => (
-            <Col key={index} className="text">
+            <Col key={index}>
               <Link to={`/detail/${index}`}>
                 <Card item={item} index={index} />
-              </Link>
-            </Col>
-          ))}
-        </Row>
-      </Container>
-
-      <Container className="goods-container">
-        <Row>
-          {axiosData.map((item, index) => (
-            <Col key={index} className="text">
-              <Link to={`/detail/${index}`}>
-                <Card item={item} index={index + 3} />
               </Link>
             </Col>
           ))}
@@ -37,7 +25,10 @@ export default function Home({ shoes, axiosData, handleClick }) {
         <button
           onClick={() => {
             handleClick();
-            setHide(false);
+            setDataNum(dataNum + 1);
+            if (dataNum === 3) {
+              setHide(false);
+            }
           }}
         >
           더보기

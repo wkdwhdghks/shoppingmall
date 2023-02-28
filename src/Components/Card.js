@@ -4,7 +4,7 @@ export default function Card({ item, index }) {
       <img
         src={`https://codingapple1.github.io/shop/shoes${index + 1}.jpg`}
         alt="Shoes"
-        width="80%"
+        width="400px"
       ></img>
       <h4>{item.title}</h4>
       <p>{item.content}</p>

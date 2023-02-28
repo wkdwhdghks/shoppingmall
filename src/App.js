@@ -8,14 +8,19 @@ import axios from "axios";
 import "./App.css";
 
 export default function App() {
-  const [shoes] = useState(data);
-  const [axiosData, setAxiosData] = useState([]);
+  const [shoes, setShoes] = useState(data);
+  const [dataNum, setDataNum] = useState(2);
+  const [loading, setLoading] = useState(false);
 
   const handleClick = () => {
+    setLoading(true);
     axios
-      .get("https://codingapple1.github.io/shop/data2.json")
+      .get(`https://codingapple1.github.io/shop/data${dataNum}.json`)
       .then((result) => {
-        setAxiosData(result.data);
+        setShoes([...shoes, ...result.data]);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -37,13 +42,16 @@ export default function App() {
         </Container>
       </Navbar>
 
+      {loading && <div>로딩중 입니다.</div>}
+
       <Routes>
         <Route
           path="/"
           element={
             <Home
               shoes={shoes}
-              axiosData={axiosData}
+              dataNum={dataNum}
+              setDataNum={setDataNum}
               handleClick={handleClick}
             />
           }
