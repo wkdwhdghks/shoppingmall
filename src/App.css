@@ -1,3 +1,12 @@
+.start {
+  opacity: 0;
+}
+
+.end {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
 .nav-container {
   margin: 0 40px;
 }
@@ -31,6 +40,16 @@ a {
 
 .product-information {
   color: black;
+}
+
+.tab-container {
+  text-align: center;
+  display: flex;
+}
+
+.detail-info {
+  text-align: start;
+  padding-top: 20px;
 }
 
 .sale {

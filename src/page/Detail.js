@@ -5,6 +5,7 @@ import Nav from "react-bootstrap/Nav";
 export default function Detail({ shoes }) {
   const [sale, setSale] = useState(true);
   const [tab, setTab] = useState(0);
+  const [fade, setFade] = useState("");
   const { id } = useParams();
   const findItme = shoes.find((item) => item.id === Number(id));
 
@@ -14,10 +15,18 @@ export default function Detail({ shoes }) {
     }, 2000);
   }, []);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setFade("end");
+    }, 100);
+
+    return setFade("");
+  }, []);
+
   return (
     <div className="container">
       {sale && <div className="sale">2초 이내 구매 시 할인</div>}
-      <div className="row">
+      <div className={`tab-container start ${fade}`}>
         <div className="col-md-6">
           <img
             src={`https://codingapple1.github.io/shop/shoes${
@@ -27,7 +36,7 @@ export default function Detail({ shoes }) {
             alt="shoes"
           />
         </div>
-        <div className="col-md-6">
+        <div className="col-md-6 detail-info">
           <h4 className="pt-5">{findItme.title}</h4>
           <p>{findItme.content}</p>
           <p>{findItme.price}</p>
@@ -74,5 +83,19 @@ export default function Detail({ shoes }) {
 }
 
 function TabContent({ tab }) {
-  return [<div>내용 0</div>, <div>내용1</div>, <div>내용2</div>][tab];
+  const [fade, setFade] = useState("");
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFade("end");
+    }, 100);
+
+    return setFade("");
+  }, [tab]);
+
+  return (
+    <div className={`"tab-container start ${fade}`}>
+      {[<div>내용 0</div>, <div>내용 1</div>, <div>내용 2</div>][tab]}
+    </div>
+  );
 }
