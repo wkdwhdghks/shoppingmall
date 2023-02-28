@@ -1,4 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import Card from "../Components/Card.js";
 
 export default function Home({ shoes }) {
@@ -8,8 +9,10 @@ export default function Home({ shoes }) {
       <Container className="goods-container">
         <Row>
           {shoes.map((item, index) => (
-            <Col key={index}>
-              <Card item={item} index={index} />
+            <Col key={index} className="text">
+              <Link to={`/detail/${index}`}>
+                <Card item={item} index={index} />
+              </Link>
             </Col>
           ))}
         </Row>

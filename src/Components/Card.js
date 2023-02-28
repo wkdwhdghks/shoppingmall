@@ -1,6 +1,6 @@
 export default function Card({ item, index }) {
   return (
-    <div>
+    <div className="product-information">
       <img
         src={`https://codingapple1.github.io/shop/shoes${index + 1}.jpg`}
         alt="Shoes"
