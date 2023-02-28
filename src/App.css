@@ -32,3 +32,14 @@ a {
 .product-information {
   color: black;
 }
+
+.sale {
+  background-color: #fff2cd;
+  height: 70px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #aa9c74;
+  font-size: large;
+}
