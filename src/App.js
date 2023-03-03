@@ -37,7 +37,7 @@ export default function App() {
               <Link to="/">Home</Link>
             </ul>
             <ul>
-              <Link to="/detail">Detail</Link>
+              <Link to="/cart">Cart</Link>
             </ul>
           </li>
         </Container>

@@ -1,11 +1,8 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
-const cartData = createSlice({
-  name: "cartData",
-  initialState: [
-    { id: 0, name: "White and Black", count: 2 },
-    { id: 2, name: "Grey Yordan", count: 1 },
-  ],
+const cart = createSlice({
+  name: "cart",
+  initialState: [],
   reducers: {
     addCount(state, action) {
       let num = state.findIndex((el) => el.id === action.payload);
@@ -19,13 +16,25 @@ const cartData = createSlice({
         state[num].count = 0;
       }
     },
+    addItem(state, action) {
+      const { payload } = action;
+      if (state.find((item) => item.name === payload.title)) {
+        alert("이미 장바구니에 추가된 상품입니다.");
+      } else {
+        state.push({ id: payload.id, name: payload.title, count: 0 });
+        alert("장바구니에 추가되었습니다.");
+      }
+    },
+    deleteItem(state, action) {
+      return state.filter((el) => el.id !== action.payload);
+    },
   },
 });
 
-export let { addCount, minusCount } = cartData.actions;
+export let { addCount, minusCount, addItem, deleteItem } = cart.actions;
 
 export default configureStore({
   reducer: {
-    cartData: cartData.reducer,
+    cart: cart.reducer,
   },
 });

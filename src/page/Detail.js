@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import Nav from "react-bootstrap/Nav";
+import { addItem } from "../store";
 
 export default function Detail({ shoes }) {
   const [sale, setSale] = useState(true);
@@ -8,6 +10,7 @@ export default function Detail({ shoes }) {
   const [fade, setFade] = useState("");
   const { id } = useParams();
   const findItme = shoes.find((item) => item.id === Number(id));
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setTimeout(() => {
@@ -40,7 +43,14 @@ export default function Detail({ shoes }) {
           <h4 className="pt-5">{findItme.title}</h4>
           <p>{findItme.content}</p>
           <p>{findItme.price}</p>
-          <button className="btn btn-danger">주문하기</button>
+          <button
+            className="btn btn-danger"
+            onClick={() => {
+              dispatch(addItem(findItme));
+            }}
+          >
+            주문하기
+          </button>
         </div>
       </div>
 
