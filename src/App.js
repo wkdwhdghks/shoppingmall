@@ -3,6 +3,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import { useState } from "react";
 import Home from "./page/Home";
 import Detail from "./page/Detail";
+import Cart from "./page/Cart";
 import data from "./data.js";
 import axios from "axios";
 import "./App.css";
@@ -57,6 +58,7 @@ export default function App() {
           }
         ></Route>
         <Route path="/detail/:id" element={<Detail shoes={shoes} />}></Route>
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>
   );
