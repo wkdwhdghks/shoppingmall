@@ -26,6 +26,13 @@ export default function Detail({ shoes }) {
     return setFade("");
   }, []);
 
+  useEffect(() => {
+    let watched = JSON.parse(localStorage.getItem("watched"));
+    watched.push(findItme.id);
+    let ddplc = [...new Set(watched)];
+    localStorage.setItem("watched", JSON.stringify(ddplc));
+  }, [findItme]);
+
   return (
     <div className="container">
       {sale && <div className="sale">2초 이내 구매 시 할인</div>}

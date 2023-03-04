@@ -1,6 +1,6 @@
 import { Navbar, Container } from "react-bootstrap";
 import { Routes, Route, Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Home from "./page/Home";
 import Detail from "./page/Detail";
 import Cart from "./page/Cart";
@@ -12,6 +12,14 @@ export default function App() {
   const [shoes, setShoes] = useState(data);
   const [dataNum, setDataNum] = useState(2);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("watched") !== []) {
+      return;
+    } else {
+      return localStorage.setItem("watched", JSON.stringify([]));
+    }
+  }, []);
 
   const handleClick = () => {
     setLoading(true);
