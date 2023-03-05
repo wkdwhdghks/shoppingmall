@@ -1,0 +1,42 @@
+.box {
+  margin: 30px;
+}
+
+.tableBox {
+  min-height: 500px;
+  width: 77%;
+  padding: 0px 30px;
+  border: 3px solid #d3d3d3;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.table {
+  text-align: center;
+  border: 5px solid #212529;
+  border-style: hidden;
+}
+
+.button {
+  background-color: #efefef;
+  width: 25px;
+  height: 25px;
+  border: none;
+  border-radius: 3px;
+  margin-right: 2.5px;
+  margin-left: 2.5px;
+}
+
+.count {
+  display: inline-block;
+  width: 25px;
+}
+
+.delButton {
+  background-color: #efefef;
+  width: 50px;
+  height: 25px;
+  border: none;
+  border-radius: 3px;
+  margin-left: 10px;
+}

@@ -30,9 +30,17 @@ export default function Detail({ shoes }) {
 
   useEffect(() => {
     let watched = JSON.parse(localStorage.getItem("watched"));
-    watched.push(findItme.id);
-    let ddplc = [...new Set(watched)];
-    localStorage.setItem("watched", JSON.stringify(ddplc));
+    let a = watched.find((item) => item.title === findItme.title);
+    if (a === undefined) {
+      watched.unshift({
+        title: findItme.title,
+        img: `https://codingapple1.github.io/shop/shoes${findItme.id + 1}.jpg`,
+      });
+      if (watched.length === 4) {
+        watched.pop();
+      }
+    }
+    localStorage.setItem("watched", JSON.stringify(watched));
   }, [findItme]);
 
   return (

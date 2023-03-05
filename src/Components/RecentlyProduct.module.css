@@ -1,0 +1,31 @@
+.box {
+  width: 20%;
+  min-width: 280px;
+  height: 650px;
+  display: inline-block;
+  position: fixed;
+  top: 90px;
+  right: 30px;
+  margin-left: 20px;
+  padding: 20px;
+  background-color: #efefef;
+  opacity: 0.9;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.subBox {
+  margin-bottom: 15px;
+}
+
+.title {
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  padding-bottom: 20px;
+}
+
+.img {
+  width: 200px;
+  height: 140px;
+  margin-bottom: 10px;
+}
