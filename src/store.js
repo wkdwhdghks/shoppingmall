@@ -22,7 +22,7 @@ const cart = createSlice({
         alert("이미 장바구니에 추가된 상품입니다.");
       } else {
         state.push({ id: payload.id, name: payload.title, count: 0 });
-        alert("장바구니에 추가되었습니다.");
+        alert("장바구니에 담았습니다.");
       }
     },
     deleteItem(state, action) {

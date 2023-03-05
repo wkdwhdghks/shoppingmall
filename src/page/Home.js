@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Card from "../Components/Card.js";
+import Card from "../Components/Card.jsx";
+import styles from "./Home.module.css";
 
 export default function Home({ shoes, dataNum, setDataNum, handleClick }) {
   const [hide, setHide] = useState(true);
 
   return (
     <div>
-      <div className="main-bg"></div>
-      <Container className="goods-container">
+      <div className={styles.img}></div>
+
+      <Container className={styles.box}>
         <Row>
           {shoes.map((item, index) => (
             <Col key={index}>
@@ -23,6 +25,7 @@ export default function Home({ shoes, dataNum, setDataNum, handleClick }) {
 
       {hide && (
         <button
+          className={styles.button}
           onClick={() => {
             handleClick();
             setDataNum(dataNum + 1);
@@ -31,7 +34,7 @@ export default function Home({ shoes, dataNum, setDataNum, handleClick }) {
             }
           }}
         >
-          더보기
+          상품 더보기
         </button>
       )}
     </div>

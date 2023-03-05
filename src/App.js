@@ -6,7 +6,6 @@ import Detail from "./page/Detail";
 import Cart from "./page/Cart";
 import data from "./data.js";
 import axios from "axios";
-import "./App.css";
 
 export default function App() {
   const [shoes, setShoes] = useState(data);
@@ -14,10 +13,8 @@ export default function App() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem("watched") !== []) {
-      return;
-    } else {
-      return localStorage.setItem("watched", JSON.stringify([]));
+    if (localStorage.getItem("watched") === null) {
+      localStorage.setItem("watched", JSON.stringify([]));
     }
   }, []);
 

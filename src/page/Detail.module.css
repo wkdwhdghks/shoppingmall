@@ -1,0 +1,27 @@
+.button {
+  background-color: white;
+  border: 1px solid #212529;
+  margin-right: 5px;
+}
+
+.button:hover {
+  background-color: #212529;
+  color: white;
+}
+
+.sale {
+  background-color: #fff2cd;
+  height: 70px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #aa9c74;
+  font-size: large;
+}
+
+.infoBox {
+  text-align: start;
+  padding-top: 30px;
+  padding-left: 30px;
+}

@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import Nav from "react-bootstrap/Nav";
 import { addItem } from "../store";
+import TabContent from "../Components/TabContent";
+import styles from "./Detail.module.css";
+import Tab from "../Components/Tab";
 
 export default function Detail({ shoes }) {
   const [sale, setSale] = useState(true);
@@ -35,7 +37,7 @@ export default function Detail({ shoes }) {
 
   return (
     <div className="container">
-      {sale && <div className="sale">2초 이내 구매 시 할인</div>}
+      {sale && <div className={styles.sale}>2초 이내 구매 시 할인</div>}
       <div className={`tab-container start ${fade}`}>
         <div className="col-md-6">
           <img
@@ -46,73 +48,26 @@ export default function Detail({ shoes }) {
             alt="shoes"
           />
         </div>
-        <div className="col-md-6 detail-info">
+        <div className={styles.infoBox}>
           <h4 className="pt-5">{findItme.title}</h4>
           <p>{findItme.content}</p>
-          <p>{findItme.price}</p>
+          <p>{findItme.price.toLocaleString()}원</p>
           <button
-            className="btn btn-danger"
+            className={styles.button}
             onClick={() => {
               dispatch(addItem(findItme));
             }}
           >
             주문하기
           </button>
+          <Link to={"/"}>
+            <button className={styles.button}>뒤로가기</button>
+          </Link>
         </div>
       </div>
 
-      <Nav variant="tabs" defaultActiveKey="link0">
-        <Nav.Item>
-          <Nav.Link
-            onClick={() => {
-              setTab(0);
-            }}
-            eventKey="link0"
-          >
-            버튼0
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link
-            onClick={() => {
-              setTab(1);
-            }}
-            eventKey="link1"
-          >
-            버튼1
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link
-            onClick={() => {
-              setTab(2);
-            }}
-            eventKey="link2"
-          >
-            버튼2
-          </Nav.Link>
-        </Nav.Item>
-      </Nav>
-
+      <Tab setTab={setTab} />
       <TabContent tab={tab} />
-    </div>
-  );
-}
-
-function TabContent({ tab }) {
-  const [fade, setFade] = useState("");
-
-  useEffect(() => {
-    setTimeout(() => {
-      setFade("end");
-    }, 100);
-
-    return setFade("");
-  }, [tab]);
-
-  return (
-    <div className={`"tab-container start ${fade}`}>
-      {[<div>내용 0</div>, <div>내용 1</div>, <div>내용 2</div>][tab]}
     </div>
   );
 }
